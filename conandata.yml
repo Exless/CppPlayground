@@ -1,0 +1,10 @@
+# This file is managed by Conan, contents will be overwritten.
+# To keep your changes, remove these comment lines, but the plugin won't be able to modify your requirements
+
+requirements:
+  - "fruit/3.7.1"
+  - "gtest/1.15.0"
+  - "nlohmann_json/3.11.3"
+  - "fmt/11.0.2"
+  - "easyloggingpp/9.97.1"
+  - "libcurl/8.10.1"
