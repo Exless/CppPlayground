@@ -2,6 +2,7 @@
 # To keep your changes, remove these comment lines, but the plugin won't be able to modify your requirements
 
 requirements:
+  - "boost/1.83.0"
   - "fruit/3.7.1"
   - "gtest/1.15.0"
   - "nlohmann_json/3.11.3"

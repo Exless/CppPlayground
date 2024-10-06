@@ -1,11 +1,14 @@
+#include <boost/asio/basic_deadline_timer.hpp>
 #include <iostream>
 #include <memory>
 
 #include <fmt/format.h>
+#include <fruit/fruit.h>
+#include <nlohmann/json.hpp>
+
+#include "TcpServer.h"
 #include "Vertex.h"
 #include "easylogging++.h"
-#include <nlohmann/json.hpp>
-#include <fruit/fruit.h>
 
 using fmt::format;
 using nlohmann::json;
@@ -37,6 +40,22 @@ int adds(const int x, const int y)
   return x + y;
 }
 
+void startServer()
+{
+  try
+  {
+    boost::asio::io_context io_context;
+    short port = 2020;
+
+    LOG(INFO) << format("Starting TCP Listener on port {}", port);
+    TcpServer server(io_context, port);
+    io_context.run();
+  } catch (std::exception &e)
+  {
+    LOG(ERROR) << format("Server run failed: {}", e.what());
+  }
+}
+
 int main()
 {
   setupLogging();
@@ -59,5 +78,6 @@ int main()
 
   LOG(INFO) << format("This is the json {}", jsonStr);
 
-  return 0;
+
+  startServer();
 }

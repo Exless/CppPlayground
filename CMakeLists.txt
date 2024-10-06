@@ -14,13 +14,16 @@ find_package(fmt)
 find_package(nlohmann_json)
 find_package(GTest)
 find_package(fruit)
+find_package(Boost)
 
 set(CMAKE_CXX_STANDARD 20)
 
 # main program
 add_executable(JsonParser src/main.cpp
         src/Vertex.cpp
-        src/Vertex.h)
+        src/Vertex.h
+        src/TcpServer.cpp
+        src/TcpServer.h)
 
 target_link_libraries(JsonParser
         easyloggingpp::easyloggingpp
@@ -28,6 +31,7 @@ target_link_libraries(JsonParser
         fmt::fmt
         nlohmann_json::nlohmann_json
         fruit::fruit
+        boost::boost
 )
 
 # tests
